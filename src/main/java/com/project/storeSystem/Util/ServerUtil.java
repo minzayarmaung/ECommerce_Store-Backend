@@ -1,11 +1,23 @@
 package com.project.storeSystem.Util;
 
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public class ServerUtil {
     public static String ipAddress = "";
 
     public String getLocalDateTime(){
-
-
-        return "";
+        LocalDateTime date = LocalDateTime.now(ZoneId.of("Asia/Rangoon"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return date.format(formatter);
+    }
+    public String getLocalDate(){
+        LocalDate date = LocalDate.now(ZoneId.of("Asia/Rangoon"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
+        return date.format(formatter);
     }
 }

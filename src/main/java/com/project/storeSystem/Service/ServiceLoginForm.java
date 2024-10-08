@@ -9,4 +9,9 @@ public interface ServiceLoginForm {
     // User Login
     public void userLogin(User user);
 
+    // Checking Valid License
+    boolean checkValidLicense(User user);
+
+    // Checking Valid User or Not
+    boolean checkValidUser(User user);
 }
