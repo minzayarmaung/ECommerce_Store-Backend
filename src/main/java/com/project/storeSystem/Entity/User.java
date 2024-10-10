@@ -1,15 +1,13 @@
 package com.project.storeSystem.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "U001" , schema = "dbo")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,6 +35,7 @@ public class User {
     private long N3;
     private long N4;
     private long N5;
+    private long status;
 
 
 
