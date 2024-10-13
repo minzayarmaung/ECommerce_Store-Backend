@@ -3,6 +3,7 @@ package com.project.storeSystem.ServiceImpl;
 import com.project.storeSystem.Entity.User;
 import com.project.storeSystem.Repository.UserRepository;
 import com.project.storeSystem.Service.ServiceLoginForm;
+import com.project.storeSystem.Util.AESAlgorithm;
 import com.project.storeSystem.Util.ServerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
@@ -39,7 +40,7 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
 
             return currentDate.isBefore(licenseDate);
         } else {
-            return false;  // No valid license found
+            return false;
         }
     }
 
@@ -49,7 +50,7 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
         Optional<String> validUser = userRepository.checkValidUser();
         if (validUser.isPresent()) {
             String userName = validUser.get();
-            if (userName.equalsIgnoreCase(user.getT1())) {
+            if (userName.equalsIgnoreCase(AESAlgorithm.decryptString(user.getT1()))) {
                 return check = true;
             } else {
                 return check = false;
