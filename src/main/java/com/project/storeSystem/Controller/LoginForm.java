@@ -20,18 +20,19 @@ public class LoginForm {
 
     @PostMapping("/signin")
     public ResponseEntity<String> signin (@RequestBody User user){
+        System.out.println(user);
         boolean isValidLicense = false;
         boolean isValidUser = false;
         isValidLicense = serviceLoginForm.checkValidLicense(user);
         isValidUser = serviceLoginForm.checkValidUser(user);
 
         if (isValidLicense && isValidUser){
-            return ResponseEntity.status(HttpStatus.CREATED).body("User Created Successfully");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Login Successfully");
         }
         else if (isValidLicense && !isValidUser){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("User Not Found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");
         } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Invalid License");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid License");
         }
     }
 

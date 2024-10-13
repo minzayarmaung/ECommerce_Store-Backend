@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +23,6 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
 
     @Override
     public void userLogin(User user) {
-        String sql = "SELECT T1 and T2 FROM U001 where RecordStatus <> 4";
-
 
     }
     @Override
@@ -31,8 +31,11 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
         Optional<String> validLicense = userRepository.checkValidLicense();
         if (validLicense.isPresent()) {
             String validLic = validLicense.get();
-            LocalDate licenseDate = LocalDate.parse(validLic);
-            LocalDate currentDate = LocalDate.parse(today);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+            LocalDate licenseDate = LocalDate.parse(validLic , formatter);
+
+            DateTimeFormatter todayFormatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
+            LocalDate currentDate = LocalDate.parse(today , todayFormatter);
 
             return currentDate.isBefore(licenseDate);
         } else {
@@ -42,8 +45,16 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
 
     @Override
     public boolean checkValidUser(User user) {
-
-
-        return true;
+        boolean check = false;
+        Optional<String> validUser = userRepository.checkValidUser();
+        if (validUser.isPresent()) {
+            String userName = validUser.get();
+            if (userName.equalsIgnoreCase(user.getT1())) {
+                return check = true;
+            } else {
+                return check = false;
+            }
+        }
+        return check;
     }
 }

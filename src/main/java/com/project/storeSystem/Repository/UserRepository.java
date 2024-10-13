@@ -15,4 +15,6 @@ public interface UserRepository extends JpaRepository<User , Long> {
     @Query("SELECT u.T2 FROM User u WHERE u.status = 1")
     Optional<String> checkValidLicense();
 
+    @Query("SELECT u.T1 FROM User u WHERE u.status = 1")
+    Optional<String> checkValidUser();
 }
