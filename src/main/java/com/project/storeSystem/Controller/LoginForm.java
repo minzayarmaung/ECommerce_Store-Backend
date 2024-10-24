@@ -2,6 +2,7 @@ package com.project.storeSystem.Controller;
 
 import com.project.storeSystem.Entity.User;
 import com.project.storeSystem.Service.ServiceLoginForm;
+import com.project.storeSystem.Util.TokenUtil;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,9 @@ public class LoginForm {
         isValidUser = serviceLoginForm.checkValidUser(user);
 
         if (isValidLicense && isValidUser){
-            return ResponseEntity.status(HttpStatus.CREATED).body("Login Successfully");
+            String token = TokenUtil.generateToken(user.getUsername());
+
+            return ResponseEntity.status(HttpStatus.CREATED).body("Login Successfully. Token : " + token);
         }
         else if (isValidLicense && !isValidUser){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User Not Found");
