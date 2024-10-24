@@ -1,8 +1,11 @@
 package com.project.storeSystem.Util;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import java.security.SignatureException;
 import java.util.Date;
 
 public class TokenUtil {
@@ -18,6 +21,24 @@ public class TokenUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + expiredTime))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
+    }
+
+    public static boolean validToken(String token , String username){
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(SECRET_KEY)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            String tokenUsername = claims.getSubject();
+            Date expiration = claims.getExpiration();
+
+            return (username.equals(tokenUsername) && !expiration.before(new Date()));
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
