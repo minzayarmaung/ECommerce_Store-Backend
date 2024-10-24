@@ -20,7 +20,8 @@ public class AESAlgorithm {
     public static boolean readAESKey() {
         boolean exist = false;
         String[] keys = new String[2];
-        String filePath = "E:\\PointStar_Mobile_Project\\backend\\storeSystem\\src\\main\\resources\\config\\AESConfig.txt";
+        //String filePath = "E:\\PointStar_Mobile_Project\\backend\\storeSystem\\src\\main\\resources\\config\\AESConfig.txt";
+        String filePath = "src/main/resources/config/AESConfig.txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             keys[0] = reader.readLine();

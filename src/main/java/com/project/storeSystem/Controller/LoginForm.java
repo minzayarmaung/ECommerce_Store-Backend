@@ -30,9 +30,9 @@ public class LoginForm {
             return ResponseEntity.status(HttpStatus.CREATED).body("Login Successfully");
         }
         else if (isValidLicense && !isValidUser){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User Not Found");
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid License");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid License");
         }
     }
 
