@@ -31,7 +31,7 @@ public class LoginForm {
 
         if (isValidLicense && isValidUser) {
             String jwtToken = TokenUtil.generateToken(user.getUsername());
-            return ResponseEntity.status(HttpStatus.CREATED).body("Login Successfully.");
+            return ResponseEntity.status(HttpStatus.OK).body("Login Successfully.");
         } else if (isValidLicense && !isValidUser) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("User Not Found");
         } else {
