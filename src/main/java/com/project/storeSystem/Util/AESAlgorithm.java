@@ -73,7 +73,7 @@ public class AESAlgorithm {
                 SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
                 AlgorithmParameterSpec paramSpec = new IvParameterSpec(ivBytes);
                 cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, paramSpec);
-                return new String(cipher.doFinal(Base64.getDecoder().decode(value)), "UTF-8");
+                return new String(cipher.doFinal(Base64.getDecoder().decode(value)), StandardCharsets.UTF_8);
             } catch(Exception e) {
                 e.printStackTrace();
             }
