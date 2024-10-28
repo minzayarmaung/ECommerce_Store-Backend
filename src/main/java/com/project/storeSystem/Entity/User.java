@@ -36,6 +36,8 @@ public class User {
     private long N5;
     private long status;
 
-
+    public void setPassword(String password){
+        this.T3 = password;
+    }
 
 }

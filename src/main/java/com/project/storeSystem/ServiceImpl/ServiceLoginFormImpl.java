@@ -46,10 +46,14 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
 
     @Override
     public boolean checkValidUser(User user) {
-        Optional<String> validUser = userRepository.checkValidUser();
-        if (validUser.isPresent()) {
-            String userName = validUser.get();
-            if (userName.equalsIgnoreCase(AESAlgorithm.decryptString(user.getT1()))) {
+        Optional<Object[]> result = userRepository.checkValidUser();
+        if (result.isPresent()) {
+            Object[] data = (Object[]) result.get()[0];
+
+            String dbUsername = (String) data[0];
+            String dbPassword = (String) data[1];
+
+            if (user.getUsername().equalsIgnoreCase(dbUsername) && user.getT3().equals(dbPassword)){
                 return true;
             } else {
                 return false;
@@ -57,4 +61,7 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
         }
         return false;
     }
+
+
+
 }
