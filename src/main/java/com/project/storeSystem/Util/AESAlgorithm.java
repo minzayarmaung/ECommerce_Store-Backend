@@ -52,7 +52,7 @@ public class AESAlgorithm {
                 AlgorithmParameterSpec paramSpec = new IvParameterSpec(ivBytes);
                 cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, paramSpec);
                 // return new String (cipher.doFinal(value.getBytes("UTF-8")));
-                return Base64.getEncoder().encodeToString(cipher.doFinal(value.getBytes("UTF-8")));
+                return Base64.getEncoder().encodeToString(cipher.doFinal(value.getBytes(StandardCharsets.UTF_8)));
             } catch(Exception e) {
                 e.printStackTrace();
             }
