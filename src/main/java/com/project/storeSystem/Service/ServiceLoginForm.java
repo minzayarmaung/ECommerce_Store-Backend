@@ -3,6 +3,8 @@ package com.project.storeSystem.Service;
 import com.project.storeSystem.Entity.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ServiceLoginForm {
 
@@ -14,4 +16,6 @@ public interface ServiceLoginForm {
 
     // Checking Valid User or Not
     boolean checkValidUser(User user);
+
+
 }

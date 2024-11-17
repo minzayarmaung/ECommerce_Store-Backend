@@ -1,6 +1,8 @@
 package com.project.storeSystem.ServiceImpl;
 
+import com.project.storeSystem.Entity.Invoice;
 import com.project.storeSystem.Entity.User;
+import com.project.storeSystem.Repository.InvoiceRepository;
 import com.project.storeSystem.Repository.UserRepository;
 import com.project.storeSystem.Service.ServiceLoginForm;
 import com.project.storeSystem.Util.AESAlgorithm;
@@ -53,7 +55,7 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
             String dbUsername = (String) data[0];
             String dbPassword = (String) data[1];
 
-            if (user.getUsername().equalsIgnoreCase(dbUsername) && user.getT3().equals(dbPassword)){
+            if (user.getUsername().equalsIgnoreCase(dbUsername) && user.getT3().equals(dbPassword)) {
                 return true;
             } else {
                 return false;
@@ -61,7 +63,5 @@ public class ServiceLoginFormImpl implements ServiceLoginForm{
         }
         return false;
     }
-
-
 
 }
