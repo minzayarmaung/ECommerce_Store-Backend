@@ -20,6 +20,7 @@ public class Invoice {
     private long syskey;
 
     private long autokey;
+
     private String createdDate;
     private String modifiedDate;
     private long status;
