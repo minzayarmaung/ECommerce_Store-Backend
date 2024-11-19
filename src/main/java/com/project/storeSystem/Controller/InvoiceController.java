@@ -1,5 +1,6 @@
 package com.project.storeSystem.Controller;
 
+import com.project.storeSystem.Entity.AdvSearchData;
 import com.project.storeSystem.Entity.EncryptedInvoice;
 import com.project.storeSystem.Entity.Invoice;
 import com.project.storeSystem.Service.invoiceService;
@@ -18,7 +19,7 @@ public class InvoiceController {
     private invoiceService invoiceService;
 
     @PostMapping("/getAllInvoiceItems")
-    public List<EncryptedInvoice> getAllInvoiceItems(){
-        return invoiceService.getAllInvoiceItems();
+    public List<EncryptedInvoice> getAllInvoiceItems(@RequestBody AdvSearchData adv){
+        return invoiceService.getAllInvoiceItems(adv);
     }
 }

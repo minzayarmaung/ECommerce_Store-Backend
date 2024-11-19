@@ -1,5 +1,6 @@
 package com.project.storeSystem.ServiceImpl;
 
+import com.project.storeSystem.Entity.AdvSearchData;
 import com.project.storeSystem.Entity.EncryptedInvoice;
 import com.project.storeSystem.Entity.Invoice;
 import com.project.storeSystem.Repository.InvoiceRepository;
@@ -19,7 +20,7 @@ public class invoiceServiceImpl implements invoiceService {
 
 
     @Override
-    public List<EncryptedInvoice> getAllInvoiceItems() {
+    public List<EncryptedInvoice> getAllInvoiceItems(AdvSearchData adv) {
         List<Invoice> items = invoiceRepository.findAll();
         List<EncryptedInvoice> encryptedItems = new ArrayList<>();
         items.forEach(item -> encryptedItems.add(encryptedInvoiceItems(item)));
