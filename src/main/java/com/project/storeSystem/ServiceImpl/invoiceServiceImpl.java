@@ -22,23 +22,13 @@ public class invoiceServiceImpl implements invoiceService {
     @Override
     public List<EncryptedInvoice> getAllInvoiceItems(AdvSearchData adv) {
 
-        advSearchData(adv.getStatus() , adv.getId(), adv.getName(), adv.getBranch() , adv.getCity() ,
+        List<Invoice> items = invoiceRepository.findAdvSearchData(adv.getStatus() , adv.getId(), adv.getName(), adv.getBranch() , adv.getCity() ,
                 adv.getTownship() , adv.getFromDate() , adv.getToDate() , adv.getFromTime() , adv.getToTime());
 
-        List<Invoice> items = invoiceRepository.findAll();
         List<EncryptedInvoice> encryptedItems = new ArrayList<>();
         items.forEach(item -> encryptedItems.add(encryptedInvoiceItems(item)));
         return encryptedItems;
     }
-
-    private static List<Invoice> advSearchData(String status, String id, String name, String branch, String city, String township, String fromDate, String toDate, String fromTime, String toTime) {
-
-
-
-        return null;
-    }
-
-
 
     private EncryptedInvoice encryptedInvoiceItems(Invoice invoice) {
         EncryptedInvoice encryptedInvoice = new EncryptedInvoice();
