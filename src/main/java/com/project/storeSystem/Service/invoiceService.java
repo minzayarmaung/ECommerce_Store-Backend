@@ -9,6 +9,5 @@ import java.util.List;
 
 @Service
 public interface invoiceService {
-
     List<EncryptedInvoice> getAllInvoiceItems(AdvSearchData adv);
 }

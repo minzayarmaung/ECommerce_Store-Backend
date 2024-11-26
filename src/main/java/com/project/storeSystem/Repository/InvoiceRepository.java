@@ -15,7 +15,6 @@ public interface InvoiceRepository extends JpaRepository<Invoice , Long> {
     @Query(value = "SELECT * FROM INV001 WHERE STATUS <> ?" , nativeQuery = true)
     List<Invoice> getDatabyStatus(String status);
 
-
     @Query(value = "SELECT * FROM INV001 WHERE 1=1 " +
             "AND (:status IS NULL OR status = :status) " +
             "AND (:id IS NULL OR T2 = :id) " +
