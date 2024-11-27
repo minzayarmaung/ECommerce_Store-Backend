@@ -39,7 +39,4 @@ public interface InvoiceRepository extends JpaRepository<Invoice , Long> {
             @Param("fromTime") String fromTime,
             @Param("toTime") String toTime
     );
-
-
-
 }
