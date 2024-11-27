@@ -27,5 +27,6 @@ public class AdvSearchData {
     private String religion;
     private String phoneNumber;
     private String email;
+    private String jobPosition;
 
 }
