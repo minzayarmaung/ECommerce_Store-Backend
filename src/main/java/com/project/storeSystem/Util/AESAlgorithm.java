@@ -74,8 +74,8 @@ public class AESAlgorithm {
                 AlgorithmParameterSpec paramSpec = new IvParameterSpec(ivBytes);
                 cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, paramSpec);
                 return new String(cipher.doFinal(Base64.getDecoder().decode(value)), StandardCharsets.UTF_8);
-            } catch(Exception e) {
-                e.printStackTrace();
+            } catch(Exception ex) {
+                ex.printStackTrace();
             }
         }
         return "Error Encrypting Data";
