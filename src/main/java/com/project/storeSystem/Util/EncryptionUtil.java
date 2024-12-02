@@ -1,9 +1,6 @@
 package com.project.storeSystem.Util;
 
-import com.project.storeSystem.Entity.EncryptedInvoice;
-import com.project.storeSystem.Entity.EncryptedPersonData;
-import com.project.storeSystem.Entity.Invoice;
-import com.project.storeSystem.Entity.PersonData;
+import com.project.storeSystem.Entity.*;
 
 public class EncryptionUtil {
 
@@ -93,5 +90,49 @@ public class EncryptionUtil {
             throw new RuntimeException("Error Encrypting Invoice Items");
         }
         return encryptedInvoice;
+    }
+
+    public static EncryptedStock encryptedStockItems(Stock stock) {
+        EncryptedStock encryptedItem = new EncryptedStock();
+        try{
+            encryptedItem.setEncryptedSyskey((AESAlgorithm.encryptString(String.valueOf(stock.getSyskey()))));
+            encryptedItem.setEncryptedAutokey((AESAlgorithm.encryptString(String.valueOf(stock.getAutokey()))));
+
+            // String
+            encryptedItem.setCreatedDate(AESAlgorithm.encryptString(stock.getCreatedDate()));
+            encryptedItem.setModifiedDate(AESAlgorithm.encryptString(stock.getModifiedDate()));
+            encryptedItem.setT1(AESAlgorithm.encryptString(stock.getT1()));
+            encryptedItem.setT2(AESAlgorithm.encryptString(stock.getT2()));
+            encryptedItem.setT3(AESAlgorithm.encryptString(stock.getT3()));
+            encryptedItem.setT4(AESAlgorithm.encryptString(stock.getT4()));
+            encryptedItem.setT5(AESAlgorithm.encryptString(stock.getT5()));
+            encryptedItem.setT6(AESAlgorithm.encryptString(stock.getT6()));
+            encryptedItem.setT7(AESAlgorithm.encryptString(stock.getT7()));
+            encryptedItem.setT8(AESAlgorithm.encryptString(stock.getT8()));
+            encryptedItem.setT9(AESAlgorithm.encryptString(stock.getT9()));
+            encryptedItem.setT10(AESAlgorithm.encryptString(stock.getT10()));
+            encryptedItem.setT11(AESAlgorithm.encryptString(stock.getT11()));
+            encryptedItem.setT12(AESAlgorithm.encryptString(stock.getT12()));
+            encryptedItem.setT13(AESAlgorithm.encryptString(stock.getT13()));
+            encryptedItem.setT14(AESAlgorithm.encryptString(stock.getT14()));
+            encryptedItem.setT15(AESAlgorithm.encryptString(stock.getT15()));
+
+            // Long
+            encryptedItem.setN1((AESAlgorithm.encryptString(String.valueOf(stock.getN1()))));
+            encryptedItem.setN2((AESAlgorithm.encryptString(String.valueOf(stock.getN2()))));
+            encryptedItem.setN3((AESAlgorithm.encryptString(String.valueOf(stock.getN3()))));
+            encryptedItem.setN4((AESAlgorithm.encryptString(String.valueOf(stock.getN4()))));
+            encryptedItem.setN5((AESAlgorithm.encryptString(String.valueOf(stock.getN5()))));
+            encryptedItem.setN6((AESAlgorithm.encryptString(String.valueOf(stock.getN6()))));
+            encryptedItem.setN7((AESAlgorithm.encryptString(String.valueOf(stock.getN7()))));
+            encryptedItem.setN8((AESAlgorithm.encryptString(String.valueOf(stock.getN8()))));
+            encryptedItem.setN9((AESAlgorithm.encryptString(String.valueOf(stock.getN9()))));
+            encryptedItem.setN10((AESAlgorithm.encryptString(String.valueOf(stock.getN10()))));
+
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new RuntimeException("Error Encrypting Invoice Items");
+        }
+        return encryptedItem;
     }
 }
