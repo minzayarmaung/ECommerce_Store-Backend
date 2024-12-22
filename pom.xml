@@ -95,17 +95,28 @@
 			<version>0.11.5</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
-			<version>1.70</version> <!-- Replace with the latest version -->
+			<artifactId>bcprov-jdk18on</artifactId>
+			<version>1.79</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk18on -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcpg-jdk15on</artifactId>
-			<version>1.68</version>
+			<artifactId>bcpkix-jdk18on</artifactId>
+			<version>1.79</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpg-jdk18on -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpg-jdk18on</artifactId>
+			<version>1.79</version>
+		</dependency>
+
+
 
 	</dependencies>
 
